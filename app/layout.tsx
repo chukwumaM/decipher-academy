@@ -1,41 +1,22 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { CartProvider } from '@/context/CartContext';
-import WhatsAppButton from '@/components/WhatsAppButton';
 
 export const metadata: Metadata = {
-  title: 'Wendy Luxury',
-  description: 'Luxury fashion e-commerce store'
+  title: 'Decipher Academy | Learning Access Hub',
+  description: 'A premium educational landing page connecting students and parents to Decipher Academy portals, communities, and learning resources.'
 };
-
-const categories = ['mens-wear', 'female-wear', 'corporate-wear', 'shoes', 'bags', 'household-accessories'];
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>
-        <CartProvider>
-          <header className="nav">
-            <Link href="/" className="brand">Wendy Luxury</Link>
-            <nav>
-              {categories.map((c) => (
-                <Link key={c} href={`/category/${c}`} className="nav-link">{c.replace('-', ' ')}</Link>
-              ))}
-              <Link href="/cart" className="nav-link">Cart</Link>
-              <Link href="/admin/login" className="nav-link">Admin</Link>
-            </nav>
-          </header>
-          <main>{children}</main>
-          <footer className="footer">
-            <h4>Policies</h4>
-            <p>Refunds are only valid within 24 hours after receiving the product.</p>
-            <p>Delivery: Lagos within 24 hours, outside Lagos in 3–5 working days.</p>
-            <p>Pickup Days: Tuesday, Thursday, Saturday.</p>
-          </footer>
-          <WhatsAppButton />
-        </CartProvider>
-      </body>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+      </head>
+      <body><CartProvider>{children}</CartProvider></body>
     </html>
   );
 }

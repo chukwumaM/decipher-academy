@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server';
 import { connectDB } from '@/lib/db';
 import { Order } from '@/models/Order';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   await connectDB();
   const weekAgo = new Date();
